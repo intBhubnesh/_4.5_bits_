@@ -1,0 +1,6 @@
+__pycache__
+flask_session
+static/uploads
+firebase-config.js
+label_encoder.pkl
+my_model.h5

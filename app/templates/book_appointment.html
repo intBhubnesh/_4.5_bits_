@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment</title>
+</head>
+<body>
+<h1>Book Appointment at {{ clinic_name }}</h1>
+<form action="/book_appointment_confirm" method="post">
+    <input type="hidden" name="clinic_id" value="{{ clinic_id }}">
+    <input type="hidden" name="clinic_name" value="{{ clinic_name }}">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    <br>
+    <label for="time">Time:</label>
+    <select id="time" name="time" required>
+        {% for timing in available_timings %}
+            <option value="{{ timing }}">{{ timing }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="patient_name">Patient Name:</label>
+    <input type="text" id="patient_name" name="patient_name" required>
+    <br>
+    <label for="patient_email">Patient Email:</label>
+    <input type="email" id="patient_email" name="patient_email" required>
+    <br>
+    <label for="patient_phone">Patient Phone:</label>
+    <input type="tel" id="patient_phone" name="patient_phone" required>
+    <br>
+    <input type="submit" value="Book Appointment">
+</form>
+</body>
+</html>

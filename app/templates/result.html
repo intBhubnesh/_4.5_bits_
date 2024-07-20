@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clinic Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clinic Results</h1>
+    <ul>
+    {% for clinic in clinics %}
+        <li>
+            {{ clinic.title }} ({{ clinic.distance/1000 }} kms away)
+            <p>{{ clinic.vicinity }}</p>
+            <form action="/book_appointment" method="post">
+                <input type="hidden" name="clinic_name" value="{{ clinic.title }}">
+                <input type="hidden" name="clinic_id" value="{{ clinic.id }}">
+                <button type="submit">Book Appointment</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
